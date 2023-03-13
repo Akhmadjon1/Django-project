@@ -1,1 +1,1 @@
-# Dj-blog
+# Django-project
