@@ -1,11 +1,11 @@
 body {
-  background: #FFF4D2;
+  background: #DFFFD8;
   color: #333333;
   margin-top: 5rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #444444;
+  color: #333333;
 }
 
 ul {
@@ -29,7 +29,7 @@ ul {
 }
 
 .content-section {
-  background: #F7ECDE;
+  background: #FEFAE0;
   padding: 10px 20px;
   border: 1px solid #dddddd;
   border-radius: 3px;
@@ -59,7 +59,7 @@ a.article-title:hover {
 .article-metadata {
   padding-bottom: 1px;
   margin-bottom: 4px;
-  border-bottom: 1px solid #e3e3e3
+  border-bottom: 1px solid #EDF1D6
 }
 
 .article-metadata a:hover {
