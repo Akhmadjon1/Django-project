@@ -10,12 +10,21 @@ class Profile(models.Model):
     def __self__(self):
         return f'{self.user.username} Profile'
 
-    def save(self):
-        super().save()
-        
-        img = Image.open(self.image.path)
-        
-        if img.height > 300 or img.width > 300:
+    def save(self, *args, **kwargs):
+        Old_usr = Profile.objects.get(id=self.id)
+        super().save(*args, **kwargs)
+
+        # # resizing larger image for better performance
+        New_img = Image.open(self.image.path)
+
+        # deleting old one
+        if Old_usr.image != self.image:
+            Old_usr.image.delete(save=False)
+
+
+        if New_img.height > 300 or New_img.width > 300:
+            # 300 X 300 pixel
             output_size = (300, 300)
-            img.thumbnail(output_size)
-            img.save(self.image.path)
+
+            New_img.thumbnail(output_size)
+            New_img.save(self.image.path)
