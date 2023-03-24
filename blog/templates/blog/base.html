@@ -34,6 +34,7 @@
                     <div class="navbar-nav ms-auto">
                              {% if user.is_authenticated %}
                             {% if user.is_superuser %}
+                                <a class="nav-item nav-link" href="{% url 'post-create' %}">New Post</a>
                                 <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
                                 <a class="nav-item nav-link" href="/admin" target="_blank">Admin</a>
                                 <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
