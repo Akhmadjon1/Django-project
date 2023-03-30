@@ -28,3 +28,4 @@ class Profile(models.Model):
 
             New_img.thumbnail(output_size)
             New_img.save(self.image.path)
+            
