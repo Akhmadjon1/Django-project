@@ -7,25 +7,17 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='default.jpg', upload_to='profile-pics')
 
-    def __self__(self):
-        return f'{self.user.username} Profile'
+    def __str__(self):
+        return f'{self.user.username}Profile'
+
 
     def save(self, *args, **kwargs):
-        Old_usr = Profile.objects.get(id=self.id)
-        super().save(*args, **kwargs)
+        super(Profile, self).save(*args, **kwargs)
 
-        # # resizing larger image for better performance
-        New_img = Image.open(self.image.path)
+        img = Image.open(self.image.path)
 
-        # deleting old one
-        if Old_usr.image != self.image:
-            Old_usr.image.delete(save=False)
-
-
-        if New_img.height > 300 or New_img.width > 300:
-            # 300 X 300 pixel
+        if img.height > 300 or img.width > 300:
             output_size = (300, 300)
-
-            New_img.thumbnail(output_size)
-            New_img.save(self.image.path)
+            img.thumbnail(output_size)
+            img.save(self.image.path)
             
